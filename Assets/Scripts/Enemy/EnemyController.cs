@@ -18,12 +18,12 @@ public class EnemyController : MonoBehaviour
 
     #region States
     public EnemyIdle IdleState;
-    public EnemyChase ChaseState{private set; get;}
+    public EnemyChase ChaseState { private set; get; }
 
     private EnemyState m_CurrentState; // General
     #endregion
 
-    private void Awake() 
+    private void Awake()
     {
         m_Agent = GetComponent<NavMeshAgent>();
 
@@ -33,11 +33,10 @@ public class EnemyController : MonoBehaviour
         {
             Debug.LogError("NavMeshAgent no asignado en EnemyController.");
         }
-        //...
         StartStateMachine();
     }
 
-    private void Update() 
+    private void Update()
     {
         foreach (var transition in m_CurrentState.Transitions)
         {
@@ -49,7 +48,7 @@ public class EnemyController : MonoBehaviour
                 break;
             }
         }
-        m_CurrentState.OnUpdate();    
+        m_CurrentState.OnUpdate();
     }
 
     private void StartStateMachine()
@@ -71,5 +70,13 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent GetAgent()
     {
         return m_Agent;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bala"))
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
     }
 }

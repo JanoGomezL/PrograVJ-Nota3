@@ -7,6 +7,11 @@ public class GunFire : MonoBehaviour
     public ParticleSystem Disparo;
     public AudioSource sonidoDisparo;
 
+    public GameObject balaPrefab;
+    public Transform puntoDisparo;
+    public float velocidadBala = 20f;
+    public float distanciaMaxima = 50f;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -17,8 +22,18 @@ public class GunFire : MonoBehaviour
 
     void Fire()
     {
-        Disparo.Play();          // Activa las partículas
-        sonidoDisparo.Play();     // Reproduce el sonido de disparo
+        Disparo.Play();
+        sonidoDisparo.Play();
+
+        GameObject bala = Instantiate(balaPrefab, puntoDisparo.position, puntoDisparo.rotation);
+        Rigidbody rb = bala.GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            rb.velocity = puntoDisparo.forward * velocidadBala;
+        }
+
+        Destroy(bala, distanciaMaxima / velocidadBala);
     }
 
     IEnumerator DetenerParticulas()
