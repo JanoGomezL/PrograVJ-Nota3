@@ -29,6 +29,10 @@ public class EnemyController : MonoBehaviour
 
         IdleState = new EnemyIdle(this);
         ChaseState = new EnemyChase(this);
+        if (m_Agent == null)
+        {
+            Debug.LogError("NavMeshAgent no asignado en EnemyController.");
+        }
         //...
         StartStateMachine();
     }
