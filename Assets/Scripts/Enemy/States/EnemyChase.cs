@@ -57,7 +57,7 @@ public class EnemyChase : EnemyState
 
         if (EsElEnemigoMasCercano() && Time.time < proximoAtaqueTiempo)
         {
-            Debug.Log($"Esperando para el próximo ataque. Tiempo restante: {proximoAtaqueTiempo - Time.time}");
+            //Debug.Log($"Esperando para el próximo ataque. Tiempo restante: {proximoAtaqueTiempo - Time.time}");
         }
     }
 
