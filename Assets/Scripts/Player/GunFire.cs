@@ -5,10 +5,11 @@ using UnityEngine;
 public class GunFire : MonoBehaviour
 {
     public ParticleSystem Disparo;
+    public AudioSource sonidoDisparo;
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButtonDown(0))
         {
             Fire();
         }
@@ -16,6 +17,7 @@ public class GunFire : MonoBehaviour
 
     void Fire()
     {
-        Disparo.Play();  // Activa las partículas
+        Disparo.Play();          // Activa las partículas
+        sonidoDisparo.Play();     // Reproduce el sonido de disparo
     }
 }
