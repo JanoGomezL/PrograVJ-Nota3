@@ -20,4 +20,10 @@ public class GunFire : MonoBehaviour
         Disparo.Play();          // Activa las partículas
         sonidoDisparo.Play();     // Reproduce el sonido de disparo
     }
+
+    IEnumerator DetenerParticulas()
+    {
+        yield return new WaitForSeconds(Disparo.main.duration);
+        Disparo.Stop();
+    }
 }
