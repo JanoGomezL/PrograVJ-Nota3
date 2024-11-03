@@ -48,10 +48,24 @@ public class PlayerController : MonoBehaviour
         ActualizarTextoVida();
         ActualizarTextoArmadura();
         ActualizarSpriteVida();
+        // Bloquea y oculta el cursor en el centro de la pantalla
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()
     {
+        // Si necesitas desbloquear el cursor temporalmente (por ejemplo, para abrir un menú), puedes agregar esta lógica
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (Input.GetMouseButtonDown(0)) // Bloquea de nuevo cuando se haga clic
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
         if (Input.GetKeyDown(KeyCode.Y))
         {
             RecibirDañoDesdeEnemigo(10);  // Ejemplo para probar el daño
