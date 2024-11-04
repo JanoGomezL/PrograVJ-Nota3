@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyChase : EnemyState
 {
-    private float tiempoEntreAtaques = 5.0f; // Tiempo en segundos entre ataques
+    private float tiempoEntreAtaques = 0.5f; // Tiempo en segundos entre ataques
     private float proximoAtaqueTiempo; // Tiempo para el prnximo ataque
 
     public EnemyChase(EnemyController controller) : base(controller)
