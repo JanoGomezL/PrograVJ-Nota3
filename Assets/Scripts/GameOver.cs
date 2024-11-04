@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GameOver : MonoBehaviour
 {
     public GameObject gameOver;
+    public GameObject hud;
+    public GameObject menuPausa;
     public Button btnSalir;
 
     private void Start()
@@ -19,6 +21,8 @@ public class GameOver : MonoBehaviour
         if (PlayerController.Instance != null && PlayerController.Instance.GetVidaActual() <= 0)
         {
             ActivateGameOver();
+            hud.SetActive(false);
+            menuPausa.SetActive(false);
         }
     }
 
