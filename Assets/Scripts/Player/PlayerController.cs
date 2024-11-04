@@ -71,6 +71,10 @@ public class PlayerController : MonoBehaviour
             RecibirDanoDesdeEnemigo(10);  // Ejemplo para probar el dano
         }
     }
+    public int GetVidaActual()
+    {
+        return vidaActual;
+    }
 
     public void RecibirDanoDesdeEnemigo(int dano)
     {
