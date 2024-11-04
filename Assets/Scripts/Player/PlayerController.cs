@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
 
-    // Configuración de vida y armadura
+    // Configuracinn de vida y armadura
     public int vidaMaxima = 100;
     private int vidaActual;
     [Range(0, 100)] public float porcentajeArmadura;
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // Si necesitas desbloquear el cursor temporalmente (por ejemplo, para abrir un menú), puedes agregar esta lógica
+        // Si necesitas desbloquear el cursor temporalmente (por ejemplo, para abrir un menn), puedes agregar esta lngica
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
@@ -68,27 +68,27 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            RecibirDañoDesdeEnemigo(10);  // Ejemplo para probar el daño
+            RecibirDanoDesdeEnemigo(10);  // Ejemplo para probar el dano
         }
     }
 
-    public void RecibirDañoDesdeEnemigo(int daño)
+    public void RecibirDanoDesdeEnemigo(int dano)
     {
-        int dañoReducido = CalcularDañoConArmadura(daño);
-        vidaActual -= dañoReducido;
+        int danoReducido = CalcularDanoConArmadura(dano);
+        vidaActual -= danoReducido;
         vidaActual = Mathf.Clamp(vidaActual, 0, vidaMaxima);
 
-        Debug.Log($"Daño recibido: {dañoReducido}. Vida actual: {vidaActual}");
+        Debug.Log($"Dano recibido: {danoReducido}. Vida actual: {vidaActual}");
 
         ActualizarTextoVida();
         ActualizarSpriteVida();
     }
 
-    private int CalcularDañoConArmadura(int daño)
+    private int CalcularDanoConArmadura(int dano)
     {
-        float reducción = daño * (porcentajeArmadura / 100f);
-        int dañoFinal = Mathf.RoundToInt(daño - reducción);
-        return dañoFinal;
+        float reduccinn = dano * (porcentajeArmadura / 100f);
+        int danoFinal = Mathf.RoundToInt(dano - reduccinn);
+        return danoFinal;
     }
 
     private void ActualizarTextoVida()
@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
             m_OnJump = false;
         }
 
-        // Rotación y movimiento en referencia a la cámara
+        // Rotacinn y movimiento en referencia a la cnmara
         move = Camera.main.transform.forward * move.z + Camera.main.transform.right * move.x;
         move.y = 0f;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyChase : EnemyState
 {
     private float tiempoEntreAtaques = 5.0f; // Tiempo en segundos entre ataques
-    private float proximoAtaqueTiempo; // Tiempo para el próximo ataque
+    private float proximoAtaqueTiempo; // Tiempo para el prnximo ataque
 
     public EnemyChase(EnemyController controller) : base(controller)
     {
@@ -40,16 +40,16 @@ public class EnemyChase : EnemyState
             m_Controller.transform.position
         );
 
-        // Verificamos si el enemigo es el más cercano y si el tiempo de ataque ha pasado
+        // Verificamos si el enemigo es el mns cercano y si el tiempo de ataque ha pasado
         if (distanciaAlJugador <= 1.5f && Time.time >= proximoAtaqueTiempo)
         {
             if (EsElEnemigoMasCercano())
             {
                 // Actualizamos el tiempo para el siguiente ataque
                 proximoAtaqueTiempo = Time.time + tiempoEntreAtaques;
-                Debug.Log($"Daño aplicado. Siguiente ataque permitido en: {proximoAtaqueTiempo}");
-                Debug.Log("Aplicando daño al jugador desde el enemigo más cercano");
-                PlayerController.Instance.RecibirDañoDesdeEnemigo(1);
+                Debug.Log($"Dano aplicado. Siguiente ataque permitido en: {proximoAtaqueTiempo}");
+                Debug.Log("Aplicando dano al jugador desde el enemigo mns cercano");
+                PlayerController.Instance.RecibirDanoDesdeEnemigo(1);
 
                 
             }
@@ -57,7 +57,7 @@ public class EnemyChase : EnemyState
 
         if (EsElEnemigoMasCercano() && Time.time < proximoAtaqueTiempo)
         {
-            //Debug.Log($"Esperando para el próximo ataque. Tiempo restante: {proximoAtaqueTiempo - Time.time}");
+            //Debug.Log($"Esperando para el prnximo ataque. Tiempo restante: {proximoAtaqueTiempo - Time.time}");
         }
     }
 
