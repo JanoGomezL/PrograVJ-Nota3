@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    #region Properties
     [SerializeField]
     private Transform m_Player;
     [SerializeField]
@@ -14,19 +12,15 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private NavMeshAgent m_Agent;
     public EnemySO enemyType;
-    #endregion
 
-    #region States
     public EnemyIdle IdleState;
     public EnemyChase ChaseState { private set; get; }
 
-    private EnemyState m_CurrentState; // General
-    #endregion
+    private EnemyState m_CurrentState;
 
     private void Awake()
     {
         m_Agent = GetComponent<NavMeshAgent>();
-
         IdleState = new EnemyIdle(this);
         ChaseState = new EnemyChase(this);
         if (m_Agent == null)
@@ -71,6 +65,7 @@ public class EnemyController : MonoBehaviour
     {
         return m_Agent;
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bala"))

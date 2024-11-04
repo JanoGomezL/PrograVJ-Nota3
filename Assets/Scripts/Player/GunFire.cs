@@ -30,7 +30,9 @@ public class GunFire : MonoBehaviour
 
         if (rb != null)
         {
-            rb.velocity = puntoDisparo.forward * velocidadBala;
+            Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+            Vector3 direccion = ray.direction.normalized;
+            rb.velocity = direccion * velocidadBala;
         }
 
         Destroy(bala, distanciaMaxima / velocidadBala);
@@ -42,3 +44,4 @@ public class GunFire : MonoBehaviour
         Disparo.Stop();
     }
 }
+
