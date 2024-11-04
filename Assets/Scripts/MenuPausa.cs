@@ -6,7 +6,7 @@ public class MenuPausa : MonoBehaviour
     public GameObject menuPausa;
     public Button btnContinue;
     public Button btnSalir;
-    public GameObject player;
+    public GameObject shotgun;
 
     private bool isPaused = false;
 
@@ -38,7 +38,7 @@ public class MenuPausa : MonoBehaviour
     void PauseGame()
     {
         isPaused = true;
-        player.SetActive(false);
+        shotgun.SetActive(false);
         menuPausa.SetActive(true);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
@@ -48,7 +48,7 @@ public class MenuPausa : MonoBehaviour
     void ContinueGame()
     {
         isPaused = false;
-        player.SetActive(true);
+        shotgun.SetActive(true);
         menuPausa.SetActive(false);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;

@@ -8,6 +8,7 @@ public class GameOver : MonoBehaviour
     public GameObject gameOver;
     public GameObject hud;
     public GameObject menuPausa;
+    public GameObject shotgun;
     public Button btnSalir;
 
     private void Start()
@@ -22,6 +23,7 @@ public class GameOver : MonoBehaviour
         {
             ActivateGameOver();
             hud.SetActive(false);
+            shotgun.SetActive(false);
             menuPausa.SetActive(false);
         }
     }
