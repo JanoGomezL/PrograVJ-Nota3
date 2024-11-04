@@ -5,9 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public int dañoAlAcercarse = 10; // Daño que se aplica al jugador
+    public int danoAlAcercarse = 10; // Daï¿½o que se aplica al jugador
     public float tiempoEntreAtaques = 1.0f; // Tiempo en segundos entre ataques
-    private float proximoAtaqueTiempo; // Tiempo para el próximo ataque
+    private float proximoAtaqueTiempo; // Tiempo para el prï¿½ximo ataque
 
 
 }
