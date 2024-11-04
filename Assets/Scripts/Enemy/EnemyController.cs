@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
 {
     #region Properties
     [SerializeField]
-    private Transform m_Player;
+    private Transform m_Player; // Referencia al jugador que se asignará automáticamente
     [SerializeField]
     private float m_DistanceToChase = 6f;
     [SerializeField]
@@ -59,6 +59,14 @@ public class EnemyController : MonoBehaviour
 
     public Transform GetPlayer()
     {
+        if (m_Player == null)
+        {
+            m_Player = GameObject.FindWithTag("Player")?.transform;
+            if (m_Player == null)
+            {
+                Debug.LogError("No se encontró ningún objeto con la etiqueta 'Player'.");
+            }
+        }
         return m_Player;
     }
 
@@ -71,6 +79,7 @@ public class EnemyController : MonoBehaviour
     {
         return m_Agent;
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Bala"))
