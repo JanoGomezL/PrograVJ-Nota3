@@ -4,8 +4,6 @@ using UnityEngine.UI;
 public class MenuPausa : MonoBehaviour
 {
     public GameObject menuPausa;
-    public Button btnContinue;
-    public Button btnSalir;
     public GameObject shotgun;
 
     private bool isPaused = false;
@@ -15,9 +13,6 @@ public class MenuPausa : MonoBehaviour
         menuPausa.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        btnContinue.onClick.AddListener(ContinueGame);
-        btnSalir.onClick.AddListener(ExitGame);
     }
 
     void Update()
@@ -53,11 +48,5 @@ public class MenuPausa : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }
-
-    void ExitGame()
-    {
-        Application.Quit();
-        Debug.Log("Saliendo del juego...");
     }
 }
