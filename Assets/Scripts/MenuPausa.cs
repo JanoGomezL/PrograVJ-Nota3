@@ -1,20 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
-
 public class MenuPausa : MonoBehaviour
 {
     public GameObject menuPausa;
-    public GameObject shotgun;
-
+    public Button btnContinue;
+    public Button btnSalir;
+    public GameObject player;
     private bool isPaused = false;
-
     void Start()
     {
         menuPausa.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        btnContinue.onClick.AddListener(ContinueGame);
+        btnSalir.onClick.AddListener(ExitGame);
     }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.F))
@@ -29,24 +29,27 @@ public class MenuPausa : MonoBehaviour
             }
         }
     }
-
     void PauseGame()
     {
         isPaused = true;
-        shotgun.SetActive(false);
+        player.SetActive(false);
         menuPausa.SetActive(true);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-
     void ContinueGame()
     {
         isPaused = false;
-        shotgun.SetActive(true);
+        player.SetActive(true);
         menuPausa.SetActive(false);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+    void ExitGame()
+    {
+        Application.Quit();
+        Debug.Log("Saliendo del juego...");
     }
 }

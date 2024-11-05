@@ -9,8 +9,12 @@ public class btnContinuar : MonoBehaviour
 
     public void Continue()
     {
-        shotgun.SetActive(true);
+        if (menuPausa.Equals(true))
+        {
+
+        }
         menuPausa.SetActive(false);
+        shotgun.SetActive(true);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
